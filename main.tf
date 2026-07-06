@@ -148,6 +148,7 @@ resource "azurerm_windows_web_app_slot" "windows_web_app_slots" {
     load_balancing_mode           = each.value.site_config.load_balancing_mode
     local_mysql_enabled           = each.value.site_config.local_mysql_enabled
     managed_pipeline_mode         = each.value.site_config.managed_pipeline_mode
+    minimum_tls_cipher_suite      = each.value.site_config.minimum_tls_cipher_suite
     minimum_tls_version           = each.value.site_config.minimum_tls_version
     remote_debugging_enabled      = each.value.site_config.remote_debugging_enabled
     remote_debugging_version      = each.value.site_config.remote_debugging_version

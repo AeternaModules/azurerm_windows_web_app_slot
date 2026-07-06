@@ -85,6 +85,7 @@ Required:
         - load_balancing_mode (optional)
         - local_mysql_enabled (optional)
         - managed_pipeline_mode (optional)
+        - minimum_tls_cipher_suite (optional)
         - minimum_tls_version (optional)
         - remote_debugging_enabled (optional)
         - remote_debugging_version (optional)
@@ -399,6 +400,7 @@ EOT
       load_balancing_mode           = optional(string) # Default: "LeastRequests"
       local_mysql_enabled           = optional(bool)   # Default: false
       managed_pipeline_mode         = optional(string) # Default: "Integrated"
+      minimum_tls_cipher_suite      = optional(string)
       minimum_tls_version           = optional(string) # Default: "1.2"
       remote_debugging_enabled      = optional(bool)   # Default: false
       remote_debugging_version      = optional(string)
