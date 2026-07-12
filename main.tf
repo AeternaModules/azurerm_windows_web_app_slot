@@ -78,7 +78,7 @@ resource "azurerm_windows_web_app_slot" "windows_web_app_slots" {
             }
           }
           dynamic "slow_request_with_path" {
-            for_each = auto_heal_setting.value.trigger.slow_request_with_path != null ? [auto_heal_setting.value.trigger.slow_request_with_path] : []
+            for_each = auto_heal_setting.value.trigger.slow_request_with_path != null ? auto_heal_setting.value.trigger.slow_request_with_path : []
             content {
               count      = slow_request_with_path.value.count
               interval   = slow_request_with_path.value.interval
@@ -87,7 +87,7 @@ resource "azurerm_windows_web_app_slot" "windows_web_app_slots" {
             }
           }
           dynamic "status_code" {
-            for_each = auto_heal_setting.value.trigger.status_code != null ? [auto_heal_setting.value.trigger.status_code] : []
+            for_each = auto_heal_setting.value.trigger.status_code != null ? auto_heal_setting.value.trigger.status_code : []
             content {
               count             = status_code.value.count
               interval          = status_code.value.interval
@@ -113,7 +113,7 @@ resource "azurerm_windows_web_app_slot" "windows_web_app_slots" {
     default_documents = each.value.site_config.default_documents
     ftps_state        = each.value.site_config.ftps_state
     dynamic "handler_mapping" {
-      for_each = each.value.site_config.handler_mapping != null ? [each.value.site_config.handler_mapping] : []
+      for_each = each.value.site_config.handler_mapping != null ? each.value.site_config.handler_mapping : []
       content {
         arguments             = handler_mapping.value.arguments
         extension             = handler_mapping.value.extension
@@ -124,7 +124,7 @@ resource "azurerm_windows_web_app_slot" "windows_web_app_slots" {
     health_check_path                 = each.value.site_config.health_check_path
     http2_enabled                     = each.value.site_config.http2_enabled
     dynamic "ip_restriction" {
-      for_each = each.value.site_config.ip_restriction != null ? [each.value.site_config.ip_restriction] : []
+      for_each = each.value.site_config.ip_restriction != null ? each.value.site_config.ip_restriction : []
       content {
         action      = ip_restriction.value.action
         description = ip_restriction.value.description
@@ -153,7 +153,7 @@ resource "azurerm_windows_web_app_slot" "windows_web_app_slots" {
     remote_debugging_enabled      = each.value.site_config.remote_debugging_enabled
     remote_debugging_version      = each.value.site_config.remote_debugging_version
     dynamic "scm_ip_restriction" {
-      for_each = each.value.site_config.scm_ip_restriction != null ? [each.value.site_config.scm_ip_restriction] : []
+      for_each = each.value.site_config.scm_ip_restriction != null ? each.value.site_config.scm_ip_restriction : []
       content {
         action      = scm_ip_restriction.value.action
         description = scm_ip_restriction.value.description
@@ -178,12 +178,12 @@ resource "azurerm_windows_web_app_slot" "windows_web_app_slots" {
     scm_use_main_ip_restriction       = each.value.site_config.scm_use_main_ip_restriction
     use_32_bit_worker                 = each.value.site_config.use_32_bit_worker
     dynamic "virtual_application" {
-      for_each = each.value.site_config.virtual_application != null ? [each.value.site_config.virtual_application] : []
+      for_each = each.value.site_config.virtual_application != null ? each.value.site_config.virtual_application : []
       content {
         physical_path = virtual_application.value.physical_path
         preload       = virtual_application.value.preload
         dynamic "virtual_directory" {
-          for_each = virtual_application.value.virtual_directory != null ? [virtual_application.value.virtual_directory] : []
+          for_each = virtual_application.value.virtual_directory != null ? virtual_application.value.virtual_directory : []
           content {
             physical_path = virtual_directory.value.physical_path
             virtual_path  = virtual_directory.value.virtual_path
@@ -301,7 +301,7 @@ resource "azurerm_windows_web_app_slot" "windows_web_app_slots" {
       }
       config_file_path = auth_settings_v2.value.config_file_path
       dynamic "custom_oidc_v2" {
-        for_each = auth_settings_v2.value.custom_oidc_v2 != null ? [auth_settings_v2.value.custom_oidc_v2] : []
+        for_each = auth_settings_v2.value.custom_oidc_v2 != null ? auth_settings_v2.value.custom_oidc_v2 : []
         content {
           client_id                     = custom_oidc_v2.value.client_id
           name                          = custom_oidc_v2.value.name
@@ -395,7 +395,7 @@ resource "azurerm_windows_web_app_slot" "windows_web_app_slots" {
   }
 
   dynamic "connection_string" {
-    for_each = each.value.connection_string != null ? [each.value.connection_string] : []
+    for_each = each.value.connection_string != null ? each.value.connection_string : []
     content {
       name  = connection_string.value.name
       type  = connection_string.value.type
@@ -453,7 +453,7 @@ resource "azurerm_windows_web_app_slot" "windows_web_app_slots" {
   }
 
   dynamic "storage_account" {
-    for_each = each.value.storage_account != null ? [each.value.storage_account] : []
+    for_each = each.value.storage_account != null ? each.value.storage_account : []
     content {
       access_key   = storage_account.value.access_key
       account_name = storage_account.value.account_name
